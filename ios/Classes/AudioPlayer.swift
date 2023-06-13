@@ -132,7 +132,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
 
     func setHalfSpeed(result: @escaping FlutterResult) {
-        player?.currentItem?.audioTimePitchAlgorithm = .timeDomain
+        // player?.currentItem?.audioTimePitchAlgorithm = .timeDomain
         player?.rate = 0.5
         result(true)
     }
