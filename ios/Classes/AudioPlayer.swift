@@ -33,6 +33,7 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             } catch {
                 result(FlutterError(code: Constants.audioWaveforms, message: "Failed to prepare player", details: nil))
             }
+            player?.enableRate = true
             player?.prepareToPlay()
             player?.volume = Float(volume ?? 1.0)
             result(true)
@@ -132,7 +133,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
 
     func setHalfSpeed(result: @escaping FlutterResult) {
-        // player?.currentItem?.audioTimePitchAlgorithm = .timeDomain
         player?.rate = 0.5
         result(true)
     }
