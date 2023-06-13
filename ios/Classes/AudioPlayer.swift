@@ -130,4 +130,10 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         timer?.invalidate()
         timer = nil
     }
+
+    func setHalfSpeed(result: @escaping FlutterResult) {
+        player?.currentItem?.audioTimePitchAlgorithm = .timeDomain
+        player?.rate = 0.5
+        result(true)
+    }
 }

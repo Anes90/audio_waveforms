@@ -209,6 +209,12 @@ class PlayerController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> setSpeed() async {
+    await AudioWaveformsInterface.instance.halfSpeed(playerKey);
+
+    notifyListeners();
+  }
+
   /// A function to stop player. After calling this, resources are freed.
   Future<void> stopPlayer() async {
     final isStopped =

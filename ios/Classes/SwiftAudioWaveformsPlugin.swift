@@ -126,6 +126,14 @@ public class SwiftAudioWaveformsPlugin: NSObject, FlutterPlugin {
             } else {
                 result(FlutterError(code: Constants.audioWaveforms, message: "Can not get waveform data", details: "Player key is null"))
             }
+        case Constants.halfSpeed:
+            let key = args?[Constants.playerKey] as? String
+            if(key != nil){
+                audioPlayers[key!]?.setHalfSpeed(result: result)
+            } else {
+                result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
+            }
+            break
         default:
             result(FlutterMethodNotImplemented)
             break

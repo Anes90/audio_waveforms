@@ -55,6 +55,12 @@ class AudioWaveformsInterface {
     return initialized ?? false;
   }
 
+  Future<bool> halfSpeed(String key) async {
+    var result = await _methodChannel
+        .invokeMethod(Constants.halfSpeed, {Constants.playerKey: key});
+    return result ?? false;
+  }
+
   ///platform call to pause recording
   Future<bool?> pause() async {
     final isRecording =
