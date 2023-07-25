@@ -25,6 +25,7 @@ class AudioPlayer(
     private var finishMode = FinishMode.Stop
     private var key = playerKey
     private var updateFrequency = UpdateFrequency.Low
+    private var playbackSpeed = 1.0f
 
     fun preparePlayer(
         result: MethodChannel.Result,
@@ -91,6 +92,32 @@ class AudioPlayer(
         } else {
             result.success(false)
         }
+    }
+
+    fun currentPlayerRate(result: MethodChannel.Result) {
+            
+            result.success(playbackSpeed)
+    }
+
+    fun halfSpeed(result: MethodChannel.Result) {
+            player?.setPlaybackSpeed(0.5f)
+            playbackSpeed = 0.5f
+            result.success(true)
+    }
+    fun normalSpeed(result: MethodChannel.Result) {
+            player?.setPlaybackSpeed(1.0f)
+            playbackSpeed = 1.0f
+            result.success(true)
+    }
+    fun oneAndHalfSpeed(result: MethodChannel.Result) {
+            player?.setPlaybackSpeed(1.5f)
+            playbackSpeed = 1.5f
+            result.success(true)
+    }
+    fun twoTimesSpeed(result: MethodChannel.Result) {
+            player?.setPlaybackSpeed(2.0f)
+            playbackSpeed = 2.0f
+            result.success(true)
     }
 
     fun start(result: MethodChannel.Result, finishMode: Int?) {

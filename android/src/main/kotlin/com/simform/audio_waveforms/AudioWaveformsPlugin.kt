@@ -113,6 +113,48 @@ class AudioWaveformsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.error(Constants.LOG_TAG, "Player key can't be null", "")
                 }
             }
+
+            Constants.playerRate -> {
+                            val key = call.argument(Constants.playerKey) as String?
+                            if (key != null) {
+                                audioPlayers[key]?.currentPlayerRate(result)
+                            } else {
+                                result.error(Constants.LOG_TAG, "Not able to get playback speed", "")
+                            }
+                        }
+            Constants.halfSpeed -> {
+                            val key = call.argument(Constants.playerKey) as String?
+                            if (key != null) {
+                                audioPlayers[key]?.halfSpeed(result)
+                            } else {
+                                result.error(Constants.LOG_TAG, "Not able to play at half speed", "")
+                            }
+                        }
+            Constants.normalSpeed -> {
+                            val key = call.argument(Constants.playerKey) as String?
+                            if (key != null) {
+                                audioPlayers[key]?.normalSpeedSpeed(result)
+                            } else {
+                                result.error(Constants.LOG_TAG, "Not able to play at normal speed", "")
+                            }
+                        }
+            Constants.oneAndHalfSpeed -> {
+                            val key = call.argument(Constants.playerKey) as String?
+                            if (key != null) {
+                                audioPlayers[key]?.oneAndHalfSpeed(result)
+                            } else {
+                                result.error(Constants.LOG_TAG, "Not able to play at one and a half speed", "")
+                            }
+                        }
+            Constants.twoTimesSpeed -> {
+                            val key = call.argument(Constants.playerKey) as String?
+                            if (key != null) {
+                                audioPlayers[key]?.twoTimesSpeed(result)
+                            } else {
+                                result.error(Constants.LOG_TAG, "Not able to play at two times speed", "")
+                            }
+                        }
+
             Constants.seekTo -> {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     val progress = call.argument(Constants.progress) as Int?
