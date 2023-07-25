@@ -158,7 +158,7 @@ public class SwiftAudioWaveformsPlugin: NSObject, FlutterPlugin {
                 result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
             }
             break
-        case Constants.twoTimesSpeed:
+        case Constants.currentPlayerRate:
             let key = args?[Constants.playerKey] as? String
             if(key != nil){
                 audioPlayers[key!]?.currentPlayerRate(result: result)
