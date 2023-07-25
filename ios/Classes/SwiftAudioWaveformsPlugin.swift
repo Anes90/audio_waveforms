@@ -134,6 +134,39 @@ public class SwiftAudioWaveformsPlugin: NSObject, FlutterPlugin {
                 result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
             }
             break
+        case Constants.normalSpeed:
+            let key = args?[Constants.playerKey] as? String
+            if(key != nil){
+                audioPlayers[key!]?.setNormalSpeed(result: result)
+            } else {
+                result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
+            }
+            break
+        case Constants.oneAndHalfSpeed:
+            let key = args?[Constants.playerKey] as? String
+            if(key != nil){
+                audioPlayers[key!]?.setOneAndHalfSpeed(result: result)
+            } else {
+                result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
+            }
+            break
+        case Constants.twoTimesSpeed:
+            let key = args?[Constants.playerKey] as? String
+            if(key != nil){
+                audioPlayers[key!]?.setTwoTimesSpeed(result: result)
+            } else {
+                result(FlutterError(code: Constants.audioWaveforms, message: "Can not set playback speed", details: "Player key is null"))
+            }
+            break
+        case Constants.twoTimesSpeed:
+            let key = args?[Constants.playerKey] as? String
+            if(key != nil){
+                audioPlayers[key!]?.currentPlayerRate(result: result)
+            } else {
+                result(FlutterError(code: Constants.audioWaveforms, message: "Can not get current player rate", details: "Player key is null"))
+            }
+            break
+            
         default:
             result(FlutterMethodNotImplemented)
             break

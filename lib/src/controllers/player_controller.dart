@@ -209,8 +209,24 @@ class PlayerController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<double> getCurrentPlayerRate() async {
+    double playerRate =
+        await AudioWaveformsInterface.instance.currentPlayerRate(playerKey);
+    return playerRate;
+  }
+
   Future<void> setSpeed() async {
-    await AudioWaveformsInterface.instance.halfSpeed(playerKey);
+    double playerRate =
+        await AudioWaveformsInterface.instance.currentPlayerRate(playerKey);
+    if (playerRate == 0.5) {
+      await AudioWaveformsInterface.instance.normalSpeed(playerKey);
+    } else if (playerRate == 1.0) {
+      await AudioWaveformsInterface.instance.oneAndHalfSpeed(playerKey);
+    } else if (playerRate == 1.5) {
+      await AudioWaveformsInterface.instance.twoTimesSpeed(playerKey);
+    } else if (playerRate == 2.0) {
+      await AudioWaveformsInterface.instance.halfSpeed(playerKey);
+    }
 
     notifyListeners();
   }

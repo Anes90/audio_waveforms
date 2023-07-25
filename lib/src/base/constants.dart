@@ -45,5 +45,9 @@ class Constants {
   static const String useLegacyNormalization = "useLegacyNormalization";
   static const String updateFrequency = "updateFrequency";
 
+  static const String playerRate = "playerRate";
   static const String halfSpeed = "halfSpeed";
+  static const String normalSpeed = "normalSpeed";
+  static const String oneAndHalfSpeed = "oneAndHalfSpeed";
+  static const String twoTimesSpeed = "twoTimesSpeed";
 }

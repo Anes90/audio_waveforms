@@ -132,8 +132,24 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         timer = nil
     }
 
+    func currentPlayerRate(result: @escaping FlutterResult){
+        result(player?.rate)
+    }
+
     func setHalfSpeed(result: @escaping FlutterResult) {
         player?.rate = 0.5
+        result(true)
+    }
+    func setNormalSpeed(result: @escaping FlutterResult) {
+        player?.rate = 1.0
+        result(true)
+    }
+    func setOneAndHalfSpeed(result: @escaping FlutterResult) {
+        player?.rate = 1.5
+        result(true)
+    }
+    func setTwoTimesSpeed(result: @escaping FlutterResult) {
+        player?.rate = 2.0
         result(true)
     }
 }

@@ -55,9 +55,33 @@ class AudioWaveformsInterface {
     return initialized ?? false;
   }
 
+  Future<double> currentPlayerRate(String key) async {
+    var result = await _methodChannel
+        .invokeMethod(Constants.playerRate, {Constants.playerKey: key});
+    return result ?? false;
+  }
+
   Future<bool> halfSpeed(String key) async {
     var result = await _methodChannel
         .invokeMethod(Constants.halfSpeed, {Constants.playerKey: key});
+    return result ?? false;
+  }
+
+  Future<bool> normalSpeed(String key) async {
+    var result = await _methodChannel
+        .invokeMethod(Constants.normalSpeed, {Constants.playerKey: key});
+    return result ?? false;
+  }
+
+  Future<bool> oneAndHalfSpeed(String key) async {
+    var result = await _methodChannel
+        .invokeMethod(Constants.oneAndHalfSpeed, {Constants.playerKey: key});
+    return result ?? false;
+  }
+
+  Future<bool> twoTimesSpeed(String key) async {
+    var result = await _methodChannel
+        .invokeMethod(Constants.twoTimesSpeed, {Constants.playerKey: key});
     return result ?? false;
   }
 
