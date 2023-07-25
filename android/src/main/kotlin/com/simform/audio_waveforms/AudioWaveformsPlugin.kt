@@ -133,7 +133,7 @@ class AudioWaveformsPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             Constants.normalSpeed -> {
                             val key = call.argument(Constants.playerKey) as String?
                             if (key != null) {
-                                audioPlayers[key]?.normalSpeedSpeed(result)
+                                audioPlayers[key]?.normalSpeed(result)
                             } else {
                                 result.error(Constants.LOG_TAG, "Not able to play at normal speed", "")
                             }
