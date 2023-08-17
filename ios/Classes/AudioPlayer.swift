@@ -72,6 +72,11 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         } else {
             self.finishMode = FinishMode.stop
         }
+
+        let options: AVAudioSession.CategoryOptions = [.defaultToSpeaker, .allowBluetooth]
+        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: options)
+        try AVAudioSession.sharedInstance().setActive(true)
+
         player?.play()
         player?.delegate = self
         startListening()
