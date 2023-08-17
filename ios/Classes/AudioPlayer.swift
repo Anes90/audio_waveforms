@@ -80,8 +80,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: options)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            audioUrl = URL(fileURLWithPath: self.path!)
-            
             player?.play()
             player?.delegate = self
             startListening()
