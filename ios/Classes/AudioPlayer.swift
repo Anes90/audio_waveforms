@@ -74,13 +74,23 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
         }
 
         let options: AVAudioSession.CategoryOptions = [.defaultToSpeaker, .allowBluetooth]
-        try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: options)
-        try AVAudioSession.sharedInstance().setActive(true)
+        
 
-        player?.play()
-        player?.delegate = self
-        startListening()
-        result(true)
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: options)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            audioUrl = URL(fileURLWithPath: self.path!)
+            
+            player?.play()
+            player?.delegate = self
+            startListening()
+            result(true)
+        } catch {
+            result(FlutterError(code: Constants.audioWaveforms, message: "Failed to start playing", details: nil))
+        }
+
+        
     }
     
     func pausePlayer(result: @escaping FlutterResult) {
